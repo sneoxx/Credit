@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.credit.web.credittype.CreditTypeEdit"
+        datasource="creditTypeDs"
+        messagesPack="com.company.credit.web.credittype">
+    <dsContext>
+        <datasource id="creditTypeDs"
+                    class="com.company.credit.entity.CreditType"
+                    view="creditType-edit"/>
+    </dsContext>
+    <layout expand="tabsheet"
+            height="100%"
+            spacing="true"
+            width="100%">
+        <tabSheet id="tabsheet">
+            <tab id="mainTab"
+                 caption="msg://mainTab"
+                 margin="true">
+                <scrollBox id="scrollBox56"
+                           height="100%">
+                    <fieldGroup id="fieldGroup"
+                                datasource="creditTypeDs">
+                        <column width="250px">
+                            <field id="name"/>
+                            <field id="code"/>
+                            <field id="comment"/>
+                        </column>
+                    </fieldGroup>
+                </scrollBox>
+            </tab>
+        </tabSheet>
+        <iframe id="windowActions"
+                screen="editWindowActions"/>
+    </layout>
+</window>

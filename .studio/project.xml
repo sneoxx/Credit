@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project>
+    <class name="com.company.credit.entity.Credit"
+           numeratorPrefix="CR"/>
+    <class name="com.company.credit.entity.CreditRequest"
+           numeratorPrefix="REQ"/>
+</project>

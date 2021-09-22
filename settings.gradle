@@ -1,0 +1,15 @@
+/*
+ * Copyright (c) 2019 Haulmont Technology Ltd. All Rights Reserved.
+ * Haulmont Technology proprietary and confidential.
+ * Use is subject to license terms.
+ */
+
+rootProject.name = 'Credit'
+include(':credit-global', ':credit-core', ':credit-gui',
+        ':credit-web', ':credit-portal', ':credit-mobile', ':credit-mobile-rest')
+project(':credit-global').projectDir = new File(settingsDir, 'modules/global')
+project(':credit-core').projectDir = new File(settingsDir, 'modules/core')
+project(':credit-gui').projectDir = new File(settingsDir, 'modules/gui')
+project(':credit-web').projectDir = new File(settingsDir, 'modules/web')
+project(':credit-portal').projectDir = new File(settingsDir, 'modules/portal')
+project(':credit-mobile-rest').projectDir = new File(settingsDir, 'modules/mobile-rest')

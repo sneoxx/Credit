@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.credit.web.credittype.CreditTypeBrowse"
+        lookupComponent="creditTypeTable"
+        messagesPack="com.company.credit.web.credittype">
+    <dsContext>
+        <collectionDatasource id="creditTypeDs"
+                              class="com.company.credit.entity.CreditType"
+                              view="creditType-browse">
+            <query>
+                <![CDATA[select e from credit$CreditType e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="creditTypeTable"
+            spacing="true">
+        <filter id="genericFilter"
+                applyTo="creditTypeTable"
+                datasource="creditTypeDs"
+                stylename="edit-area">
+            <properties include=".*"/>
+        </filter>
+        <table id="creditTypeTable"
+               multiselect="true"
+               presentations="true"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="code"/>
+                <column id="name"/>
+                <column id="comment"/>
+            </columns>
+            <rows datasource="creditTypeDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="creditTypeTable.create"/>
+                <button id="editBtn"
+                        action="creditTypeTable.edit"/>
+                <button id="removeBtn"
+                        action="creditTypeTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

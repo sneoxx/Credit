@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.company.credit.web.ui.bank.ExtBankBrowser"
+        extends="com/haulmont/thesis/web/ui/bank/bank-browse.xml"
+        messagesPack="com.company.credit.web.ui.bank">
+    <dsContext>
+        <collectionDatasource id="banksDs"
+                              class="com.company.credit.entity.ExtBank"/>
+    </dsContext>
+    <layout>
+        <vbox>
+            <vbox id="table-panel">
+                <table id="banksTable">
+                    <columns>
+                        <column id="theMaximumNumberOfLoansFromTheBorrower"/>
+                    </columns>
+                </table>
+            </vbox>
+        </vbox>
+    </layout>
+</window>

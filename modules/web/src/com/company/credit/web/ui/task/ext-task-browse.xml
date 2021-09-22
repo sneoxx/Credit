@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.company.credit.web.ui.task.ExtTaskBrowser"
+        extends="com/haulmont/thesis/web/ui/task/task-browse.xml"
+        messagesPack="com.company.credit.web.ui.task">
+    <dsContext>
+        <groupDatasource id="cardsDs"
+                         class="com.company.credit.entity.ExtTask"
+                         datasourceClass="com.haulmont.thesis.web.ui.TaskDatasource"/>
+    </dsContext>
+    <layout>
+        <vbox id="mainLayout">
+            <split id="split">
+                <vbox id="table-panel">
+                    <groupTable id="cardsTable">
+                        <columns>
+                            <column id="creditApplication"/>
+                        </columns>
+                    </groupTable>
+                </vbox>
+            </split>
+        </vbox>
+    </layout>
+</window>

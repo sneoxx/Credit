@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="com.company.credit.entity.CreditType"
+          extends="_local"
+          name="creditType-browse"/>
+    <view class="com.company.credit.entity.CreditType"
+          extends="_local"
+          name="creditType-edit"/>
+    <view class="com.company.credit.entity.Credit"
+          extends="_local"
+          name="browse">
+        <property name="creditType"
+                  view="_local"/>
+        <property name="extBank"
+                  view="_local"/>
+        <property name="createTs"/>
+        <property name="proc"
+                  view="_local"/>
+        <property name="substitutedCreator"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.credit.entity.Credit"
+          extends="_local"
+          name="edit">
+        <property name="creditType"
+                  view="_local"/>
+        <property name="extBank"
+                  view="_local"/>
+        <property name="proc"
+                  view="_local"/>
+        <property name="procs"
+                  view="card-edit"/>
+        <property name="cardAdditionalInfo"
+                  view="_local"/>
+        <property name="attachments"
+                  view="card-edit"/>
+        <property name="roles"
+                  view="card-edit"/>
+        <property name="parentCard"
+                  view="card-tree-for-parent"/>
+        <property name="substitutedCreator"
+                  view="user-minimal"/>
+        <property name="category"
+                  view="_minimal"/>
+    </view>
+
+    <view class="com.company.credit.entity.Credit"
+          extends="_local"
+          name="_my_edit">
+        <property name="creditType"
+                  view="_local"/>
+        <property name="extBank"
+                  view="edit"/>
+        <property name="proc"
+                  view="_local"/>
+        <property name="procs"
+                  view="card-edit"/>
+        <property name="cardAdditionalInfo"
+                  view="_local"/>
+        <property name="attachments"
+                  view="card-edit"/>
+        <property name="roles"
+                  view="card-edit"/>
+        <property name="parentCard"
+                  view="card-tree-for-parent"/>
+        <property name="substitutedCreator"
+                  view="user-minimal"/>
+        <property name="category"
+                  view="_minimal"/>
+    </view>
+
+    <view class="com.company.credit.entity.CreditRequest"
+          extends="_local"
+          name="browse">
+        <property name="credit"
+                  view="_local"/>
+        <property name="borrower"
+                  view="_local"/>
+        <property name="createTs"/>
+        <property name="proc"
+                  view="proc-minimal"/>
+        <property name="substitutedCreator"
+                  view="user-minimal"/>
+        <property name="docKind"
+                  view="_minimal"/>
+        <property name="organization"
+                  view="_minimal"/>
+        <property name="docCategory"
+                  view="_minimal"/>
+        <property name="creator"
+                  view="user-minimal"/>
+        <property name="category"
+                  view="_minimal"/>
+        <property name="owner"
+                  view="_minimal"/>
+        <property name="project"
+                  view="_minimal"/>
+        <property name="parentCard"
+                  view="_minimal"/>
+        <property name="contractor"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.credit.entity.CreditRequest"
+          extends="_local"
+          name="edit">
+        <property name="credit">
+            <property name="number"/>
+            <property name="extBank">
+                <property name="theMaximumNumberOfLoansFromTheBorrower"/>
+            </property>
+       </property>
+        <property name="borrower"
+                  view="_local"/>
+        <property name="category"
+                  view="_minimal"/>
+        <property name="procs"
+                  view="card-edit"/>
+        <property name="roles"
+                  view="card-edit"/>
+        <property name="attachments"
+                  view="doc-edit"/>
+        <property name="substitutedCreator"
+                  view="user-minimal"/>
+        <property name="parentCard"
+                  view="card-tree-for-parent"/>
+        <property name="proc"
+                  view="_local"/>
+        <property name="project"
+                  view="_minimal"/>
+        <property name="projects"
+                  view="_minimal"/>
+        <property name="organization"
+                  view="_minimal"/>
+        <property name="docKind"
+                  view="edit"/>
+        <property name="owner"
+                  view="withuserdepartment"/>
+        <property name="docCategory"
+                  view="_local"/>
+        <property name="department"
+                  view="_local"/>
+        <property name="versionOf"
+                  view="_minimal"/>
+        <property name="contractor"
+                  view="_local"/>
+        <property name="cardAdditionalInfo"
+                  view="_local"/>
+    </view>
+    <view class="com.company.credit.entity.CreditRequest"
+          extends="_local"
+          name="cycle">
+        <property name="docOfficeData"
+                  view="cycle"/>
+        <property name="parentCard"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.credit.entity.CreditRequest"
+          extends="_local"
+          name="reassignmentedit">
+        <property lazy="true"
+                  name="roles"
+                  view="reassignmentcardrole"/>
+        <property name="proc"
+                  view="_local"/>
+        <property lazy="true"
+                  name="procs"
+                  view="reassignmentcardproc"/>
+        <property name="docKind"
+                  view="edit"/>
+        <property name="docCategory"
+                  view="_local"/>
+        <property lazy="true"
+                  name="owner"
+                  view="withuserdepartment"/>
+        <property name="substitutedCreator"
+                  view="user-minimal"/>
+        <property name="category"
+                  view="_minimal"/>
+        <property lazy="true"
+                  name="assignments">
+            <property name="user"/>
+            <property name="finished"/>
+        </property>
+    </view>
+    <view class="com.company.credit.entity.ExtTask"
+          extends="browse"
+          name="browse"
+          overwrite="true">
+        <property name="creditApplication"
+                  view="_local"/>
+    </view>
+    <view class="com.company.credit.entity.ExtTask"
+          extends="edit"
+          name="edit"
+          overwrite="true">
+        <property name="creditApplication"
+                  view="_local"/>
+    </view>
+
+
+    <view class="com.company.credit.entity.ExtBank"
+          extends="browse"
+          name="browse"
+          overwrite="true">
+        <property name="theMaximumNumberOfLoansFromTheBorrower"/>
+    </view>
+    <view class="com.company.credit.entity.ExtBank"
+          extends="edit"
+          name="edit"
+          overwrite="true">
+        <property name="theMaximumNumberOfLoansFromTheBorrower"/>
+    </view>
+
+</views>

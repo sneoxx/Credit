@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.company.credit.web.ui.task.ExtTaskEditor"
+        extends="com/haulmont/thesis/web/ui/task/task-edit.xml"
+        messagesPack="com.company.credit.web.ui.task">
+    <dsContext>
+        <datasource id="cardDs"
+                    class="com.company.credit.entity.ExtTask"/>
+        <collectionDatasource id="creditApplicationsDs"
+                              class="com.company.credit.entity.CreditRequest"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from credit$CreditRequest e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout>
+        <split id="split">
+            <hbox id="mainPane">
+                <tabSheet id="tabsheet">
+                    <tab id="mainTab">
+                        <groupBox id="taskInfoGroupBox">
+                            <scrollBox id="infoScrollBox">
+                                <vbox id="infoVBox">
+                                    <grid id="taskInfo">
+                                        <rows>
+                                            <row>
+                                                <label id="creditApplicationLabel"
+                                                       value="msg://com.company.credit.entity/ExtTask.creditApplication"/>
+                                                <lookupPickerField id="creditApplication"
+                                                                   datasource="cardDs"
+                                                                   optionsDatasource="creditApplicationsDs"
+                                                                   property="creditApplication"
+                                                                   width="250px"/>
+                                            </row>
+                                        </rows>
+                                    </grid>
+                                </vbox>
+                            </scrollBox>
+                        </groupBox>
+                    </tab>
+                </tabSheet>
+            </hbox>
+        </split>
+    </layout>
+</window>

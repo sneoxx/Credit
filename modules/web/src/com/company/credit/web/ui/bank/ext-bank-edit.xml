@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.company.credit.web.ui.bank.ExtBankEditor"
+        extends="com/haulmont/thesis/web/ui/bank/bank-edit.xml"
+        messagesPack="com.company.credit.web.ui.bank">
+    <dsContext>
+        <datasource id="bankDs"
+                    class="com.company.credit.entity.ExtBank"/>
+    </dsContext>
+    <layout>
+        <vbox>
+            <grid id="grid">
+                <rows>
+                    <row>
+                        <label id="theMaximumNumberOfLoansFromTheBorrowerLabel"
+                               value="msg://com.company.credit.entity/ExtBank.theMaximumNumberOfLoansFromTheBorrower"/>
+                        <textField id="theMaximumNumberOfLoansFromTheBorrower"
+                                   datasource="bankDs"
+                                   property="theMaximumNumberOfLoansFromTheBorrower"
+                                   width="250px"/>
+                    </row>
+                </rows>
+            </grid>
+        </vbox>
+    </layout>
+</window>
