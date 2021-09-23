@@ -6,4 +6,5 @@ import com.haulmont.thesis.web.ui.bank.BankEditor;
 
 public class ExtBankEditor extends BankEditor {
 
+
 }

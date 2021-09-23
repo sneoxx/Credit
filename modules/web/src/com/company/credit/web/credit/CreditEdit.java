@@ -34,7 +34,6 @@ public class CreditEdit<T extends TsCard> extends AbstractCardEditor<T> {
         super.setItem(item);
         if (isNumberAssignNeeded())
             setNumber(item);
-        
     }
 
     protected boolean isNumberAssignNeeded() {

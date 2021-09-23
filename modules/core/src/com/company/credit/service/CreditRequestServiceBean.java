@@ -34,24 +34,27 @@ public class CreditRequestServiceBean implements CreditRequestService {
 //    Создадим новый сервис для подсчета количества заявок на кредит у Физического лица
         @Override
         public Integer getCreditRequestCount (Contractor contractor) {
-            Transaction tx = persistence.createTransaction ();
-            try {
-                EntityManager em = persistence.getEntityManager ();
+            Transaction tx = persistence.createTransaction();
+            if (contractor != null) {
+                try {
+                    EntityManager em = persistence.getEntityManager();
                     TypedQuery<CreditRequest> query = em.createQuery(
                             "select c from credit$CreditRequest c where c.borrower.id = :borrowerId",
                             CreditRequest.class);
                     query.setView(metadata.getViewRepository().getView(CreditRequest.class, View.MINIMAL));
                     query.setParameter("borrowerId", contractor.getId());
-                List<CreditRequest> list = query.getResultList ();
-                tx.commit ();
-                if (CollectionUtils.isNotEmpty (list)) {
-                    return list.size ();
-                } else {
-                    return 0 ;
+                    List<CreditRequest> list = query.getResultList();
+                    tx.commit();
+                    if (CollectionUtils.isNotEmpty(list)) {
+                        return list.size();
+                    } else {
+                        return 0;
+                    }
+                } finally {
+                    tx.end();
                 }
-            } finally {
-                tx.end ();
             }
+            return 0;
         }
 
 //    4. Создать сервис осуществляющий проверку, что у пользователя нет других кредитов в

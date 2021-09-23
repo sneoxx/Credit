@@ -40,7 +40,7 @@ public class CreditRequestEdit extends AbstractDocEditor<CreditRequest> {
                 public void valueChanged (CreditRequest source, String property, @Nullable Object prevValue, @Nullable
                         Object value) {
                     if (Arrays.asList( "credit", "borrower" ).contains(property)) {
-                        if (value != null ) {
+                        if (value != null && source.getBorrower() != null && source.getCredit() != null) {
                             LoadContext ctx = new LoadContext(Credit.class).setView("_my_edit");
                             ctx.setQueryString("select u from credit$Credit u where u.id = :creditId")
                                     .setParameter("creditId", getItem().getCredit().getId());
