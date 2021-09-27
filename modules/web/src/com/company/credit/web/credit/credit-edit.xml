@@ -42,6 +42,13 @@
                 <![CDATA[ select e from credit$ExtBank e ]]>
             </query>
         </collectionDatasource>
+        <collectionDatasource id="extBanksDs"
+                              class="com.company.credit.entity.ExtBank"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from credit$ExtBank e]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <layout expand="split"
             spacing="true">
@@ -100,6 +107,7 @@
                                                 <field id="extBank"
                                                        optionsDatasource="banksDs"/>
                                                 <field id="creditDate"/>
+                                                <field id="sum"/>
                                             </column>
                                         </fieldGroup>
                                         <hbox id="signatureBox"

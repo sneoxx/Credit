@@ -1,0 +1,30 @@
+@import "../halo/halo-thesis";
+
+/* Define your theme modifications inside next mixin */
+@mixin halo-Credit {
+  @include halo-thesis;
+     .new-style-red {
+         background-color: red;
+         color: white;
+     }
+
+     .new-style-green {
+         background-color: green;
+         color: white;
+     }
+
+     .new-style-blue {
+         background-color: blue;
+         color: white;
+     }
+
+     .new-style-yellow {
+          background-color: lightyellow;
+     }
+
+     .еxceeds-field {
+         background-color: lightyellow;
+         color: white;
+      }
+}
+

@@ -1,0 +1,13 @@
+@import "halo-defaults";
+@import "halo-thesis-defaults";
+@import "halo-Credit-defaults";
+@import "halo-Credit";
+
+
+ @include halo-Credit;
+
+
+// hide Vaadin warning about theme version
+.v-theme-version {
+  display: none;
+}

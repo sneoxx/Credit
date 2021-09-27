@@ -4,16 +4,13 @@
 package com.company.credit.web.individualbrowse;
 
 import com.company.credit.service.CreditRequestService;
-import com.haulmont.chile.core.model.MetaClass;
-import com.haulmont.cuba.core.entity.Category;
 import com.haulmont.cuba.core.entity.Entity;
-import com.haulmont.cuba.gui.AppConfig;
 import com.haulmont.cuba.gui.components.Component;
-import com.haulmont.cuba.gui.components.Label;
 import com.haulmont.cuba.gui.components.Table;
 import com.haulmont.thesis.core.entity.Individual;
 import com.haulmont.thesis.web.ui.individual.IndividualBrowser;
 
+import javax.annotation.Nullable;
 import javax.inject.Inject;
 import java.util.Map;
 
@@ -35,5 +32,22 @@ public class ExtIndividualBrowser extends IndividualBrowser {
                 return new Table.PlainTextCell(creditRequestService.getCreditRequestCount((Individual) entity).toString());
             }
         });
+
+        individualsTable.addStyleProvider(new Table.StyleProvider<Individual>() {
+
+            @Override
+            public String getStyleName(Individual entity, @Nullable String property) {
+                Integer x = creditRequestService.getCreditRequestCount(entity);
+                if (x >= 0 && x < 2) {
+                    return "new-style-red";
+                } else if (x >= 2 && x < 4) {
+                    return "new-style-green";
+                } else if (x >= 4 && x < 6) {
+                    return "new-style-blue";
+                }
+                return null;
+            }
+        });
     }
+
 }

@@ -8,24 +8,13 @@ package com.company.credit.entity;
  * @author zaraevrs
  */
 import com.haulmont.cuba.core.entity.annotation.EnableRestore;
-import com.haulmont.cuba.core.entity.annotation.TrackEditScreenHistory;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.InheritanceType;
-import javax.persistence.Inheritance;
-import javax.persistence.PrimaryKeyJoinColumn;
-import com.haulmont.thesis.core.entity.Bank;
-import java.math.BigDecimal;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import com.haulmont.thesis.core.entity.TsCard;
 import com.haulmont.cuba.core.entity.annotation.Listeners;
+import com.haulmont.cuba.core.entity.annotation.TrackEditScreenHistory;
+import com.haulmont.thesis.core.entity.TsCard;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Listeners("credit_CreditListener")
 @PrimaryKeyJoinColumn(name = "CARD_ID", referencedColumnName = "ID")
@@ -38,20 +27,32 @@ import javax.persistence.TemporalType;
 public class Credit extends TsCard {
     private static final long serialVersionUID = -7390678890384918474L;
 
-    @Column(name = "NUMBER_", length = 50)
+    @Column(name = "NUMBER_", nullable = false, length = 50)
     protected String number;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CREDIT_TYPE_ID")
     protected CreditType creditType;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "BANK_ID")
     protected ExtBank extBank;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "CREDIT_DATE")
+    @Column(name = "CREDIT_DATE", nullable = false)
     protected Date creditDate;
+
+    @Column(name = "SUM_", nullable = false)
+    protected BigDecimal sum;
+
+    public void setSum(BigDecimal sum) {
+        this.sum = sum;
+    }
+
+    public BigDecimal getSum() {
+        return sum;
+    }
+
 
     public Date getCreditDate() {
         return creditDate;

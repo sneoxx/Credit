@@ -13,6 +13,13 @@
                 <![CDATA[select distinct e from credit$Credit e]]>
             </query>
         </groupDatasource>
+        <collectionDatasource id="extBanksDs"
+                              class="com.company.credit.entity.ExtBank"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from credit$ExtBank e]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <layout expand="split"
             spacing="true">
@@ -64,6 +71,7 @@
                         <column id="extBank"/>
                         <column id="creditDate"/>
                         <column id="creditType"/>
+                        <column id="sum"/>
                     </columns>
                     <rows datasource="cardsDs"/>
                     <rowsCount/>

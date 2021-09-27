@@ -20,10 +20,11 @@ create table CREDIT_CREDIT_TYPE (
 create table CREDIT_CREDIT (
     CARD_ID uuid,
     --
-    NUMBER_ varchar(50),
+    NUMBER_ varchar(50) not null,
     CREDIT_TYPE_ID uuid not null,
-    BANK_ID uuid,
-    CREDIT_DATE date,
+    BANK_ID uuid not null,
+    CREDIT_DATE date not null,
+    SUM_ decimal(19, 2) not null,
     --
     primary key (CARD_ID)
 )^

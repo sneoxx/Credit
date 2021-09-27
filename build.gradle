@@ -203,6 +203,9 @@ configure(webModule) {
         webcontent(thesisWebToolkitGAV + [classifier: 'web', ext: 'zip'])
         webcontent("com.haulmont.thesis.cryptopro:thesis-cryptopro-web:$thesisVersion:web@zip")
         themes(group: 'com.haulmont.cuba', name: 'cuba-web-themes', version: cubaVersion)
+        provided("com.haulmont.cuba:cuba-web-themes:$cubaVersion")
+        themes("com.haulmont.thesis.app:thesis-web-themes:$thesisVersion")
+        provided("com.haulmont.thesis.app:thesis-web-themes:$thesisVersion")
     }
 
     task webArchive(type: Zip) {
@@ -234,6 +237,9 @@ configure(webModule) {
         appJars('thesis-gui', 'thesis-global', 'thesis-web', 'reports-web', 'reports-gui', 'reports-global', 'charts-gui', 'charts-global', 'charts-web', 'workflow-global', 'workflow-gui', 'workflow-web', 'fts-gui', 'fts-global', 'fts-web', 'cuba-client', 'cuba-global', 'cuba-gui', 'cuba-web', 
         'thesis-bpmn-diagram','thesis-cryptopro-global', 'thesis-cryptopro-web','credit-global', 'credit-gui', 'credit-web', 'thesis-shared-workflow')
     }
+    task buildScssThemes(type: ThesisWebScssThemeCreation)
+    task deployThemes(type: CubaDeployThemeTask, dependsOn: buildScssThemes)
+    assemble.dependsOn buildScssThemes
 }
 
 task undeploy(type: Delete, dependsOn: ':credit-web:cleanConf') {
