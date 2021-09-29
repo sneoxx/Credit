@@ -10,6 +10,7 @@ import org.apache.commons.lang.StringUtils;
 
 public class CreditEdit<T extends TsCard> extends AbstractCardEditor<T> {
 
+
 //    @Inject
 //    protected NumerationService numerationService;
 //

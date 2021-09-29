@@ -15,5 +15,4 @@ public interface CreditRequestService {
     Integer getCreditRequestCount (Contractor individual);
 
     boolean checkTheLimitOnTheNumberOfLoansIssued(CreditRequest creditRequest);
-
 }

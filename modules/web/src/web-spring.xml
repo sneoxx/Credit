@@ -20,30 +20,29 @@
                   ref="cuba_clusterInvocationSupport"/>
         <property name="remoteServices">
             <map>
+                <entry key="credit_EmployeeService"
+                       value="com.company.credit.service.EmployeeService"/>
                 <entry key="credit_CreditRequestService"
                        value="com.company.credit.service.CreditRequestService"/>
             </map>
         </property>
     </bean>
-
-<!--    <bean id="credit_MBeanExporter" lazy-init="false"-->
-<!--          class="com.haulmont.cuba.core.sys.jmx.MBeanExporter">-->
-<!--        <property name="beans">-->
-<!--            <map>-->
-<!--                <entry key="${cuba.webContextName}.credit:type=Credit"-->
-<!--                       value-ref="credit_CreditMBean"/>-->
-<!--            </map>-->
-<!--        </property>-->
-<!--    </bean>-->
-
-<!--    <bean id="credit_MBeanExporter" lazy-init="false"-->
-<!--          class="com.haulmont.cuba.core.sys.jmx.MBeanExporter">-->
-<!--        <property name="beans">-->
-<!--            <map>-->
-<!--                <entry key="credit_CreditMBeanService"-->
-<!--                       value="credit_CreditMBean"/>-->
-<!--            </map>-->
-<!--        </property>-->
-<!--    </bean>-->
-
+    <!--    <bean id="credit_MBeanExporter" lazy-init="false"-->
+    <!--          class="com.haulmont.cuba.core.sys.jmx.MBeanExporter">-->
+    <!--        <property name="beans">-->
+    <!--            <map>-->
+    <!--                <entry key="${cuba.webContextName}.credit:type=Credit"-->
+    <!--                       value-ref="credit_CreditMBean"/>-->
+    <!--            </map>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+    <!--    <bean id="credit_MBeanExporter" lazy-init="false"-->
+    <!--          class="com.haulmont.cuba.core.sys.jmx.MBeanExporter">-->
+    <!--        <property name="beans">-->
+    <!--            <map>-->
+    <!--                <entry key="credit_CreditMBeanService"-->
+    <!--                       value="credit_CreditMBean"/>-->
+    <!--            </map>-->
+    <!--        </property>-->
+    <!--    </bean>-->
 </beans>
