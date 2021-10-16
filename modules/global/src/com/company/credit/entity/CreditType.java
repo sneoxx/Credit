@@ -7,15 +7,14 @@ package com.company.credit.entity;
 /**
  * @author zaraevrs
  */
+import com.haulmont.chile.core.annotations.NamePattern;
+import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.EnableRestore;
 import com.haulmont.cuba.core.entity.annotation.TrackEditScreenHistory;
 
-import javax.inject.Named;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import com.haulmont.chile.core.annotations.NamePattern;
-import javax.persistence.Column;
-import com.haulmont.cuba.core.entity.StandardEntity;
 
 @NamePattern("%s|name")
 @Table(name = "CREDIT_CREDIT_TYPE")

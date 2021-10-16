@@ -23,7 +23,7 @@
                                 datasource="creditTypeDs">
                         <column width="250px">
                             <field id="name"/>
-                            <field id="code"/>
+                            <field id="code" editable="false"/>
                             <field id="comment"/>
                         </column>
                     </fieldGroup>

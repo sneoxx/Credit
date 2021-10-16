@@ -53,7 +53,6 @@ public class Credit extends TsCard {
         return sum;
     }
 
-
     public Date getCreditDate() {
         return creditDate;
     }
@@ -61,7 +60,6 @@ public class Credit extends TsCard {
     public void setCreditDate(Date creditDate) {
         this.creditDate = creditDate;
     }
-
 
     public void setNumber(String number) {
         this.number = number;
@@ -86,6 +84,5 @@ public class Credit extends TsCard {
     public ExtBank getExtBank() {
         return extBank;
     }
-
 
 }

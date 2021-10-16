@@ -3,6 +3,7 @@
  */
 package com.company.credit.service;
 
+import com.company.credit.EmployeeCount;
 import com.haulmont.thesis.core.entity.Employee;
 
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.Map;
 public interface EmployeeService {
     String NAME = "credit_EmployeeService";
 
-//    Employee[] getСompletedTasksEmployees (Employee employee);
      List<Map<String,Object>> getСompletedTasksEmployees (List<Employee> listEmployeesWithFinishedTask);
+
+     List<Map<String,Object>> getСompletedTasksEmployeeCount(List<EmployeeCount> listEmployeesWithNumberOfCompletedTasks );
+
 }

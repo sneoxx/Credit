@@ -3,9 +3,11 @@
  */
 package com.company.credit.service;
 
+import com.company.credit.EmployeeCount;
 import com.haulmont.cuba.core.Persistence;
 import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.thesis.core.entity.Employee;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -18,42 +20,48 @@ import java.util.*;
 public class EmployeeServiceBean implements EmployeeService {
 
     @Inject
-    protected Persistence persistence ;
+    protected Persistence persistence;
 
     @Inject
-    protected Metadata metadata ;
+    protected Metadata metadata;
 
-
-        @Override
-        public List<Map<String,Object>> getСompletedTasksEmployees (List<Employee> listEmployeesWithFinishedTask ) {
+    @Override
+    public List<Map<String, Object>> getСompletedTasksEmployees(List<Employee> listEmployeesWithFinishedTask) {
 //        Map<String, Long> resultMap = list.stream().collect(Collectors.groupingBy(, Collectors.counting()));
-           List<Map<String, Object>> resultList = new ArrayList<>();
-           Map<Employee, Integer> resultMapEmployeesWithNumberOfCompletedTasks = new HashMap<>();
-            // помещаем вашу коллекцию в сет
-            Set<Employee> setEmployeesWithFinishedTask = new HashSet<>(listEmployeesWithFinishedTask);
-            // чистим вашу коллекцию
-            //id_.clear();
-            // помещаем из коллекции сета обратно в вашу коллекцию,
-            // которая на данный момент ещё пустая
-           // id_.addAll(set);
-            for (Employee employee: setEmployeesWithFinishedTask) {
-                int occurrences = Collections.frequency(listEmployeesWithFinishedTask, employee);
-                resultMapEmployeesWithNumberOfCompletedTasks.put(employee, occurrences);
-            }
-
-            for (Map.Entry<Employee, Integer> entry : resultMapEmployeesWithNumberOfCompletedTasks.entrySet()) {
-                Map<String, Object> map = new HashMap<>();
-                map.put("firstName", entry.getKey().getFirstName());
-                map.put("lastName", entry.getKey().getLastName());
-                map.put("department.name", entry.getKey().getDepartment().getName());
-                map.put("numberOfCompletedTasks", entry.getValue());
-                resultList.add(map);
-            }
-
+        List<Map<String, Object>> resultList = new ArrayList<>();
+        Map<Employee, Integer> resultMapEmployeesWithNumberOfCompletedTasks = new HashMap<>();
+        Set<Employee> setEmployeesWithFinishedTask = new HashSet<>(listEmployeesWithFinishedTask);
+        for (Employee employee : setEmployeesWithFinishedTask) {
+            int occurrences = Collections.frequency(listEmployeesWithFinishedTask, employee);
+            resultMapEmployeesWithNumberOfCompletedTasks.put(employee, occurrences);
+        }
+        for (Map.Entry<Employee, Integer> entry : resultMapEmployeesWithNumberOfCompletedTasks.entrySet()) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("firstName", entry.getKey().getFirstName());
+            map.put("lastName", entry.getKey().getLastName());
+            map.put("department.name", entry.getKey().getDepartment().getName());
+            map.put("numberOfCompletedTasks", entry.getValue());
+            resultList.add(map);
+        }
         return resultList;
     }
 
-
+    @Override
+    public List<Map<String, Object>> getСompletedTasksEmployeeCount(List<EmployeeCount> listСompletedTasksEmployeeCount) {
+        List<Map<String, Object>> resultList = new ArrayList<>();
+        if (CollectionUtils.isNotEmpty(listСompletedTasksEmployeeCount)) {
+            for (EmployeeCount item : listСompletedTasksEmployeeCount) {
+                Map<String, Object> map = new HashMap<>();
+                map.put("firstName", item.getEmployee().getFirstName());
+                map.put("lastName", item.getEmployee().getFirstName());
+                map.put("department.name", item.getEmployee().getDepartment() != null ? item.getEmployee().getDepartment().getName() : "");
+                map.put("numberOfCompletedTasks", item.getCount());
+                resultList.add(map);
+            }
+        }
+        return resultList;
+    }
+}
 //    public List<Map<String,Object>> getСompletedTasksEmployees1 (List<Employee> list) {
 //        Map<String, Long> resultMap = list.stream().collect(Collectors.groupingBy(, Collectors.counting()));
 //        List<Map<String, Object>> resultList = new ArrayList<>();
@@ -114,7 +122,6 @@ public class EmployeeServiceBean implements EmployeeService {
 //    }
 
 
-
 //    //Создать отчет по всем сотрудникам и показывать количество завершенных ими задач
 //    @Override
 //    public Employee[] getСompletedTasksEmployees3 (Employee employee) {
@@ -165,4 +172,3 @@ public class EmployeeServiceBean implements EmployeeService {
 //return result1
 
 
-}

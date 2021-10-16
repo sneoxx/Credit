@@ -1,14 +1,13 @@
 
 package com.company.credit.web.credittype;
 
-import java.util.Map;
-
+import com.company.credit.entity.CreditType;
 import com.haulmont.cuba.core.app.UniqueNumbersService;
 import com.haulmont.cuba.gui.components.AbstractEditor;
-import com.company.credit.entity.CreditType;
 import org.slf4j.Logger;
 
 import javax.inject.Inject;
+import java.util.Map;
 
 public class CreditTypeEdit extends AbstractEditor<CreditType> {
 
@@ -27,6 +26,6 @@ public class CreditTypeEdit extends AbstractEditor<CreditType> {
 
     @Override
     public void init(Map<String, Object> params) {
-        super.init(params);
+         super.init(params);
     }
 }

@@ -1,29 +1,24 @@
 package com.company.credit.web.creditrequest;
 
 import com.company.credit.entity.Credit;
+import com.company.credit.entity.CreditRequest;
 import com.company.credit.service.CreditRequestService;
-import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.LoadContext;
-import com.haulmont.cuba.core.global.PersistenceHelper;
 import com.haulmont.cuba.gui.components.Action;
+import com.haulmont.cuba.gui.components.Component;
 import com.haulmont.cuba.gui.components.DialogAction;
+import com.haulmont.cuba.gui.components.Label;
 import com.haulmont.cuba.gui.data.impl.DsListenerAdapter;
 import com.haulmont.thesis.web.actions.PrintReportAction;
 import com.haulmont.thesis.web.ui.basicdoc.editor.AbstractDocEditor;
 import com.haulmont.workflow.core.app.WfUtils;
-import com.haulmont.cuba.gui.components.Component;
-import com.haulmont.cuba.gui.components.Label;
 import org.apache.commons.lang.StringUtils;
-import com.haulmont.cuba.core.entity.Entity;
-
-
-import java.util.Arrays;
-import java.util.Map;
-
-import com.company.credit.entity.CreditRequest;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
+import java.util.Arrays;
+import java.util.Map;
 
 
 public class CreditRequestEdit extends AbstractDocEditor<CreditRequest> {
@@ -88,7 +83,6 @@ public class CreditRequestEdit extends AbstractDocEditor<CreditRequest> {
 //    4. Создать сервис осуществляющий проверку, что у пользователя нет других кредитов в   текущем банке из кредита.
 //    1 Вызывать при смене заемщика или кредита в заявке и показывать сообщение о количестве кредитов для данного заемщика.
 //    2 Блокировать сохранение новой карточки, если количество кредитов больше порогового значения.
-//    3 Пороговое значение задается для каждого банка как новый атрибут.
     @Override
     public boolean validateAll() {
         boolean b = super.validateAll();
@@ -102,7 +96,7 @@ public class CreditRequestEdit extends AbstractDocEditor<CreditRequest> {
             if (creditCount > theMaximumNumberOfLoansFromTheBorrower) {
                 showOptionDialog(getMessage("Внимание"), getMessage("Число кредитов клиента в данном банке " + creditCount + " превышает пороговое значение " + theMaximumNumberOfLoansFromTheBorrower + "и выдать его невозможно, измените заявку"),
                         MessageType.CONFIRMATION, new Action[]
-                                {new DialogAction(DialogAction.Type.YES) {
+                                { new DialogAction(DialogAction.Type.YES) {
                                     @Override
                                     public void actionPerform(Component component) { }
                                 }

@@ -22,8 +22,6 @@ public class ExtCompanyBrowser extends CompanyBrowser {
     @Inject
     CreditRequestService creditRequestService;
 
-
-
     @Override
     public void init(Map<String, Object> params) {
         super.init(params);
@@ -35,8 +33,8 @@ public class ExtCompanyBrowser extends CompanyBrowser {
             }
         });
 
-        companiesTable.addStyleProvider(new Table.StyleProvider<Company>() {
 
+        companiesTable.addStyleProvider(new Table.StyleProvider<Company>() {
             @Override
             public String getStyleName(Company entity, @Nullable String property) {
                 Integer x = creditRequestService.getCreditRequestCount(entity);
@@ -50,7 +48,5 @@ public class ExtCompanyBrowser extends CompanyBrowser {
                 return null;
             }
         });
-
-
     }
 }

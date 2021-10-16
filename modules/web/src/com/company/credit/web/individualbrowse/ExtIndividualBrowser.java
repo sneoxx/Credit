@@ -25,6 +25,7 @@ public class ExtIndividualBrowser extends IndividualBrowser {
     @Override
     public void init(Map<String, Object> params) {
         super.init(params);
+
         individualsTable.addGeneratedColumn(getMessage("NumberOfLoanApplications"), new Table.ColumnGenerator() {
 
             @Override
@@ -49,5 +50,4 @@ public class ExtIndividualBrowser extends IndividualBrowser {
             }
         });
     }
-
 }

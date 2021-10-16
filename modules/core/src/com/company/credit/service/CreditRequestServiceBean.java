@@ -29,8 +29,7 @@ public class CreditRequestServiceBean implements CreditRequestService {
     @Inject
     protected Metadata metadata ;
 
-
-    //    Создадим новый сервис для подсчета количества заявок на кредит у Физического лица
+    //Создадим новый сервис для подсчета количества заявок на кредит у Физического лица
     @Override
     public Integer getCreditRequestCount (Contractor contractor) {
         Transaction tx = persistence.createTransaction();
@@ -55,8 +54,7 @@ public class CreditRequestServiceBean implements CreditRequestService {
         }
         return 0;
     }
-
-    //    4. Создать сервис осуществляющий проверку, что у пользователя нет других кредитов в
+//    4. Создать сервис осуществляющий проверку, что у пользователя нет других кредитов в
 //    текущем банке из кредита.
 //    1 Вызывать при смене заемщика или кредита в заявке и показывать сообщение о количестве кредитов для данного заемщика.
 //    2 Блокировать   сохранение новой карточки, если количество кредитов больше порогового значения.
